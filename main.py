@@ -1,3 +1,6 @@
+import requests
+
+# --- SUA LISTA ATUAL ---
 # Definindo o conteúdo do seu XML
 xml_header = '<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Lourival026">\n'
 xml_footer = '</tv>'
@@ -17,7 +20,6 @@ canais = """
   <channel id="Globo.Manaus"><display-name lang="pt">Globo Manaus HD</display-name></channel>
   <channel id="Rede.Amazonica.PV"><display-name lang="pt">Rede Amazonica Porto Velho HD</display-name></channel>
   <channel id="Globo.Liberal"><display-name lang="pt">Globo TV Liberal Belém</display-name></channel>
-
   <channel id="SBT.News"><display-name lang="pt">SBT NEWS</display-name></channel>
   <channel id="Mais.SBT"><display-name lang="pt">+SBT HD</display-name></channel>
   <channel id="SBT.SP"><display-name lang="pt">SBT SP SD</display-name></channel>
@@ -28,7 +30,6 @@ canais = """
   <channel id="SBT.Guajara"><display-name lang="pt">SBT Guajará</display-name></channel>
   <channel id="TV.Aratu"><display-name lang="pt">TV ARATU HD</display-name></channel>
   <channel id="SBT.Cidade.Verde"><display-name lang="pt">SBT CIDADE VERDE FHD</display-name></channel>
-
   <channel id="TVE.RS"><display-name lang="pt">TVE FHD</display-name></channel>
   <channel id="TV.Sonata"><display-name lang="pt">TV Sonata</display-name></channel>
   <channel id="Guia.TV"><display-name lang="pt">Guia TV</display-name></channel>
@@ -64,7 +65,6 @@ canais = """
   <channel id="Canal.Boi"><display-name lang="pt">Canal do Boi HD</display-name></channel>
   <channel id="Agro.Canal"><display-name lang="pt">Agro Canal</display-name></channel>
   <channel id="Agro.Mais"><display-name lang="pt">Agro + HD</display-name></channel>
-
   <channel id="Record.SP"><display-name lang="pt">RecordTV SP HD</display-name></channel>
   <channel id="Record.Nacional"><display-name lang="pt">RecordTV HD</display-name></channel>
   <channel id="Record.RJ"><display-name lang="pt">RecordTV RJ HD</display-name></channel>
@@ -79,7 +79,6 @@ canais = """
   <channel id="TV.Tropical"><display-name lang="pt">TV Tropical HD</display-name></channel>
   <channel id="Record.SicTV"><display-name lang="pt">Record SicTV (RO)</display-name></channel>
   <channel id="TV.Brusque"><display-name lang="pt">TV BRUSQUE HD</display-name></channel>
-
   <channel id="Band.SP"><display-name lang="pt">Band SP HD</display-name></channel>
   <channel id="Band.RJ"><display-name lang="pt">Band RJ HD</display-name></channel>
   <channel id="Band.RS"><display-name lang="pt">Band RS</display-name></channel>
@@ -89,7 +88,6 @@ canais = """
   <channel id="Band.MG"><display-name lang="pt">Band MG HD</display-name></channel>
   <channel id="Band.MT"><display-name lang="pt">Band Mato Grosso HD</display-name></channel>
   <channel id="New.Brasil"><display-name lang="pt">NEW BRASIL HD</display-name></channel>
-
   <channel id="Globo.News"><display-name lang="pt">Globo News FHD</display-name></channel>
   <channel id="Band.News"><display-name lang="pt">Band News HD</display-name></channel>
   <channel id="Record.News"><display-name lang="pt">Record News HD</display-name></channel>
@@ -103,7 +101,6 @@ canais = """
   <channel id="TV.Camara.HD2"><display-name lang="pt">TV Câmara HD²</display-name></channel>
   <channel id="Canal.GOV"><display-name lang="pt">Canal GOV</display-name></channel>
   <channel id="TV.Videonews"><display-name lang="pt">TV VIDEONEWS</display-name></channel>
-
   <channel id="HTO.Kids"><display-name lang="pt">HTO KIDS HD</display-name></channel>
   <channel id="Leo.e.Lully"><display-name lang="pt">Léo e Lully HD</display-name></channel>
   <channel id="Popeye"><display-name lang="pt">Popeye HD</display-name></channel>
@@ -129,19 +126,16 @@ canais = """
   <channel id="Jetsontv"><display-name lang="pt">Jetsontv</display-name></channel>
   <channel id="Domi.Kids"><display-name lang="pt">Domi Kids</display-name></channel>
   <channel id="Ministerio.Infantil"><display-name lang="pt">Ministério Infantil</display-name></channel>
-
   <channel id="Hallo.Series"><display-name lang="pt">Hallo! Series</display-name></channel>
   <channel id="Hallo.Classic"><display-name lang="pt">Hallo! Classic</display-name></channel>
   <channel id="Hallo.Movies"><display-name lang="pt">Hallo! Movies</display-name></channel>
   <channel id="Hallo.Anime"><display-name lang="pt">Hallo Anime HD²</display-name></channel>
   <channel id="Hallo.Doc"><display-name lang="pt">Hallo! Doc.</display-name></channel>
   <channel id="Hallo.Music"><display-name lang="pt">Hallo! Music</display-name></channel>
-
   <channel id="Pluto.TV.Star.Trek"><display-name lang="pt">Pluto TV Star Trek</display-name></channel>
   <channel id="Star.Trek.TNG"><display-name lang="pt">Star Trek: The Next Generation</display-name></channel>
   <channel id="Star.Trek.DS9"><display-name lang="pt">Star Trek: Deep Space Nine</display-name></channel>
   <channel id="Star.Trek.Voyager"><display-name lang="pt">Star Trek: Voyager</display-name></channel>
-
   <channel id="Space"><display-name lang="pt">SPACE HD</display-name></channel>
   <channel id="Space.2"><display-name lang="pt">SPACE HD²</display-name></channel>
   <channel id="TNT.HD"><display-name lang="pt">TNT HD</display-name></channel>
@@ -182,7 +176,6 @@ canais = """
   <channel id="Cine.Trianon"><display-name lang="pt">Cine Trianon HD</display-name></channel>
   <channel id="Cinerama"><display-name lang="pt">Cinerama 🇧🇴 (Bolívia)</display-name></channel>
   <channel id="Bang.Bang"><display-name lang="pt">Bang Bang HD</display-name></channel>
-
   <channel id="Runtime.Acao"><display-name lang="pt">Runtime Ação HD</display-name></channel>
   <channel id="Runtime.TV"><display-name lang="pt">Runtime TV e Filmes Grátis HD</display-name></channel>
   <channel id="Runtime.Comedia"><display-name lang="pt">Runtime Comédia HD</display-name></channel>
@@ -209,13 +202,11 @@ canais = """
   <channel id="Pluto.TV.Adrenalina.Freezone"><display-name lang="pt">Pluto TV Adrenalina Freezone</display-name></channel>
   <channel id="Hallo.Classic.2"><display-name lang="pt">Hallo! Classic</display-name></channel>
   <channel id="Hallo.Movies.2"><display-name lang="pt">Hallo! Movies</display-name></channel>
-
   <channel id="South.Park.Colecao.Cartman"><display-name lang="pt">South Park: Coleção Cartman</display-name></channel>
   <channel id="South.Park.Colecao.Kenny"><display-name lang="pt">South Park: Coleção Kenny</display-name></channel>
   <channel id="South.Park.Colecao.Kyle"><display-name lang="pt">South Park: Coleção Kyle</display-name></channel>
   <channel id="South.Park.Colecao.Stan"><display-name lang="pt">South Park: Coleção Stan</display-name></channel>
   <channel id="Comedy.Central.South.Park"><display-name lang="pt">Comedy Central South Park</display-name></channel>
-
   <channel id="Series.De.Comedia"><display-name lang="pt">Séries de Comédia | Pluto TV Brasil</display-name></channel>
   <channel id="Pluto.TV.Series.Criminais"><display-name lang="pt">Pluto TV Séries Criminais</display-name></channel>
   <channel id="Pluto.TV.Series.Acao"><display-name lang="pt">Pluto TV Séries Ação</display-name></channel>
@@ -227,14 +218,12 @@ canais = """
   <channel id="Pluto.TV.Series.Sci-Fi"><display-name lang="pt">Pluto TV Séries Sci-Fi</display-name></channel>
   <channel id="O.Homem.Que.Veio.Do.Ceu"><display-name lang="pt">O Homem que veio do Céu</display-name></channel>
   <channel id="Hallo.Series.13"><display-name lang="pt">Hallo! Series</display-name></channel>
-
   <channel id="Naruto"><display-name lang="pt">Naruto</display-name></channel>
   <channel id="Loading.TV"><display-name lang="pt">Loading... TV HD</display-name></channel>
   <channel id="Wording.TV"><display-name lang="pt">WORDING TV</display-name></channel>
   <channel id="Geekdot"><display-name lang="pt">Geekdot</display-name></channel>
   <channel id="AniTV"><display-name lang="pt">AniTV</display-name></channel>
   <channel id="Hallo.Anime"><display-name lang="pt">Hallo Anime HD²</display-name></channel>
-
   <channel id="Combate"><display-name lang="pt">Combate HD</display-name></channel>
   <channel id="DAZN.Combate"><display-name lang="pt">DAZN Combate HD</display-name></channel>
   <channel id="SFT.Combate"><display-name lang="pt">SFT Combate BR HD</display-name></channel>
@@ -243,23 +232,19 @@ canais = """
   <channel id="Lucha.Libre"><display-name lang="pt">LUCHA LIBRE</display-name></channel>
   <channel id="SFT.Combat"><display-name lang="pt">SFT Combat</display-name></channel>
   <channel id="Combatv"><display-name lang="pt">COMBATV</display-name></channel>
-
   <channel id="Ge.TV"><display-name lang="pt">Ge TV</display-name></channel>
   <channel id="Desimpedidos"><display-name lang="pt">Desimpedidos</display-name></channel>
   <channel id="Caze.TV"><display-name lang="pt">Cazé TV</display-name></channel>
   <channel id="Barcelona"><display-name lang="pt">BARCELONA</display-name></channel>
   <channel id="Real.Madrid"><display-name lang="pt">REAL MADRID</display-name></channel>
   <channel id="NSports"><display-name lang="pt">NSPORTS</display-name></channel>
-  
   <channel id="Band.Sports"><display-name lang="pt">Band Sports HD</display-name></channel>
   <channel id="Auto.TV"><display-name lang="pt">Auto TV</display-name></channel>
-
   <channel id="SporTV"><display-name lang="pt">SporTV HD</display-name></channel>
   <channel id="SporTV.FHD"><display-name lang="pt">SporTV FHD</display-name></channel>
   <channel id="SporTV.2"><display-name lang="pt">SporTV 2 HD</display-name></channel>
   <channel id="SporTV.3"><display-name lang="pt">SporTV 3 HD</display-name></channel>
   <channel id="SporTV.3.F1"><display-name lang="pt">SporTV 3 F1 AO VIVO</display-name></channel>
-  
   <channel id="ESPN"><display-name lang="pt">ESPN HD</display-name></channel>
   <channel id="ESPN.FHD"><display-name lang="pt">ESPN FHD</display-name></channel>
   <channel id="ESPN.2"><display-name lang="pt">ESPN 2 HD</display-name></channel>
@@ -268,7 +253,6 @@ canais = """
   <channel id="ESPN.4.SD"><display-name lang="pt">ESPN 4 SD</display-name></channel>
   <channel id="ESPN.5"><display-name lang="pt">ESPN 5 HD</display-name></channel>
   <channel id="ESPN.6"><display-name lang="pt">ESPN 6 HD</display-name></channel>
-
   <channel id="Premiere.Clubes"><display-name lang="pt">Premiere Clubes HD</display-name></channel>
   <channel id="Premiere.2"><display-name lang="pt">Premiere 2 HD</display-name></channel>
   <channel id="Premiere.3"><display-name lang="pt">Premiere 3 HD</display-name></channel>
@@ -276,7 +260,6 @@ canais = """
   <channel id="Premiere.5"><display-name lang="pt">Premiere 5 HD</display-name></channel>
   <channel id="Premiere.6"><display-name lang="pt">Premiere 6 HD</display-name></channel>
   <channel id="Premiere.7"><display-name lang="pt">Premiere 7 HD</display-name></channel>
-  
   <channel id="Animal.Planet"><display-name lang="pt">Animal Planet FHD</display-name></channel>
   <channel id="History"><display-name lang="pt">History HD</display-name></channel>
   <channel id="History.2"><display-name lang="pt">History 2 HD</display-name></channel>
@@ -305,7 +288,6 @@ canais = """
   <channel id="Motorvision"><display-name lang="pt">Motorvision FHD</display-name></channel>
   <channel id="Auto.TV.2"><display-name lang="pt">Auto TV</display-name></channel>
   <channel id="Cultne.TV"><display-name lang="pt">Cultne TV</display-name></channel>
-
   <channel id="Nature.Moments"><display-name lang="pt">Nature Moments HD</display-name></channel>
   <channel id="Nature.Time"><display-name lang="pt">Nature Time HD</display-name></channel>
   <channel id="WildEarth"><display-name lang="pt">WildEarth 24 horas HD</display-name></channel>
@@ -316,13 +298,11 @@ canais = """
   <channel id="Pluto.TV.Paisagens"><display-name lang="pt">Pluto TV Paisagens por Stingray HD</display-name></channel>
   <channel id="Pluto.TV.Animais"><display-name lang="pt">Pluto TV Animais HD</display-name></channel>
   <channel id="O.Encantador.De.Caes"><display-name lang="pt">O Encantador de Cães HD</display-name></channel>
-
   <channel id="Pluto.TV.Misterios.2"><display-name lang="pt">Pluto TV Mistérios</display-name></channel>
   <channel id="Pluto.TV.Aliens"><display-name lang="pt">Pluto TV Aliens</display-name></channel>
   <channel id="Assombracoes"><display-name lang="pt">Assombrações</display-name></channel>
   <channel id="Estado.Paranormal"><display-name lang="pt">Estado Paranormal</display-name></channel>
   <channel id="Cacadores.de.Ovnis"><display-name lang="pt">Caçadores de Ovnis</display-name></channel>
-
   <channel id="Tv.Universal"><display-name lang="pt">Igreja Universal HD</display-name></channel>
   <channel id="Tv.Mundial"><display-name lang="pt">Igreja Mundial HD</display-name></channel>
   <channel id="Tv.Plenitude"><display-name lang="pt">Igreja Plenitude HD</display-name></channel>
@@ -330,7 +310,6 @@ canais = """
   <channel id="Tv.Evangelizar"><display-name lang="pt">Igreja Evangelizar HD</display-name></channel>
   <channel id="Cancao.Nova"><display-name lang="pt">Canção Nova HD</display-name></channel>
   <channel id="TV.Aparecida"><display-name lang="pt">TV Aparecida HD</display-name></channel>
-
   <channel id="Globoplay.Novelas"><display-name lang="pt">Globoplay Novelas</display-name></channel>
   <channel id="Malhacao.Fast"><display-name lang="pt">Malhação Fast</display-name></channel>
   <channel id="TVI.Ficcao"><display-name lang="pt">TVi Ficção</display-name></channel>
@@ -351,8 +330,32 @@ canais = """
   <channel id="Televisa.Telenovelas"><display-name lang="pt">Televisa Telenovelas</display-name></channel>
 """
 
-# Junta tudo e salva
+# Junta tudo e salva o seu principal
 with open("epg.xml", "w", encoding="utf-8") as f:
     f.write(xml_header + canais + xml_footer)
 
-print("Arquivo epg.xml gerado com sucesso!")
+print("Arquivo epg.xml principal gerado com sucesso!")
+
+# --- ADIÇÃO DE FONTES EXTERNAS POR LOURIVAL026 ---
+
+def baixar_fontes_adicionais():
+    fontes = {
+        "iptv_org": "https://iptv-org.github.io/epg/guides/br/brazil.xml",
+        "pluto_tv": "https://i.mjh.nz/PlutoTV/br.xml",
+        "claro_tv": "https://epg.orangelabs.xyz/claro.xml"
+    }
+    
+    for nome, url in fontes.items():
+        print(f"[{'Lourival026'}] Baixando fonte extra: {nome}...")
+        try:
+            resp = requests.get(url, timeout=30)
+            if resp.status_code == 200:
+                with open(f"epg_{nome}.xml", "wb") as f:
+                    f.write(resp.content)
+                print(f"[{'Lourival026'}] Sucesso: epg_{nome}.xml salvo.")
+        except Exception as e:
+            print(f"Erro ao baixar {nome}: {e}")
+
+# Executar a função extra
+baixar_fontes_adicionais()
+print("--- Todos os processos finalizados ---")
