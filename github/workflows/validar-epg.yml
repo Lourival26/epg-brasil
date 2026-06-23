@@ -1,0 +1,20 @@
+# Robô de Validação criado por Lourival026
+name: Validar EPG XML
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *' 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Instalar lib de verificação XML
+      run: sudo apt-get install -y libxml2-utils
+
+    - name: Validar sintaxe do EPG
+      run: xmllint --noout main.py
