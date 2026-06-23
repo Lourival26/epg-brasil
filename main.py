@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+# Definindo o conteúdo do seu XML
+conteudo_xml = """<?xml version="1.0" encoding="UTF-8"?>
 <tv generator-info-name="Lourival026">
 
   <!-- Canais Globo (Etapa 1) -->
