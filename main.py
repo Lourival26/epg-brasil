@@ -1,41 +1,48 @@
 import requests
 import xml.etree.ElementTree as ET
 
-# Adicionamos a fonte do Brazuca Play aqui
+# Fontes que entregam arquivos .xml diretos e possuem grade completa no Brasil
 fontes = {
     "iptv_org": "https://iptv-org.github.io/epg/guides/br/brazil.xml",
     "pluto_tv": "https://i.mjh.nz/PlutoTV/br.xml",
-    "brazuca_play": "LINK_DA_FONTE_BRAZUCA" # Substitua pelo link correto do XML
+    "epg_share": "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml"
 }
 
 def gerar_epg_unificado():
+    # Cria a estrutura raiz do XML
     root = ET.Element("tv", {"generator-info-name": "Lourival026-EPG"})
+    
+    # Conjuntos para evitar duplicatas de canais
     canais_adicionados = set()
 
     for nome, url in fontes.items():
-        print(f"Processando: {nome}...")
+        print(f"Baixando e processando: {nome}...")
         try:
-            resp = requests.get(url, timeout=45)
+            # Baixa o XML da fonte
+            resp = requests.get(url, timeout=60)
             if resp.status_code == 200:
                 temp_root = ET.fromstring(resp.content)
                 
-                # Adiciona canais
+                # Adiciona canais se ainda não existirem (evita duplicatas no cabeçalho)
                 for canal in temp_root.findall('channel'):
                     canal_id = canal.get('id')
                     if canal_id not in canais_adicionados:
                         root.append(canal)
                         canais_adicionados.add(canal_id)
                 
-                # Adiciona programas
+                # Adiciona todos os programas encontrados
                 for programa in temp_root.findall('programme'):
                     root.append(programa)
                     
+            else:
+                print(f"Erro ao baixar {nome}: Status {resp.status_code}")
         except Exception as e:
             print(f"Erro ao processar {nome}: {e}")
 
+    # Salva o arquivo final
     tree = ET.ElementTree(root)
     tree.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-    print("Sucesso: epg_completo.xml gerado com a nova fonte Brazuca Play!")
+    print("Sucesso: epg_completo.xml gerado com sucesso!")
 
 if __name__ == "__main__":
     gerar_epg_unificado()
