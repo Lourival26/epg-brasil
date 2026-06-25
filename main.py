@@ -7,9 +7,6 @@ fontes = {
     "pluto_tv": "https://i.mjh.nz/PlutoTV/br.xml"
 }
 
-# URL do EPG da Claro - TROCA AQUI pela URL correta
-URL_CLARO = "https://iptv-org.github.io/epg/guides/br/claro.xml"
-
 def gerar_epg_unificado():
     # Cria a estrutura raiz do XML
     root = ET.Element("tv", {"generator-info-name": "Lourival026-EPG"})
@@ -46,19 +43,5 @@ def gerar_epg_unificado():
     tree.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
     print("Sucesso: epg_completo.xml gerado com sucesso!")
 
-def gerar_epg_claro():
-    print("Baixando e gerando: claro...")
-    try:
-        resp = requests.get(URL_CLARO, timeout=60)
-        if resp.status_code == 200:
-            with open("claro.xml", "wb") as f:
-                f.write(resp.content)
-            print("Sucesso: claro.xml gerado com sucesso!")
-        else:
-            print(f"Erro ao baixar Claro: Status {resp.status_code}")
-    except Exception as e:
-        print(f"Erro ao processar Claro: {e}")
-
 if __name__ == "__main__":
-    gerar_epg_unificado()  # gera epg_completo.xml com iptv_org + pluto_tv
-    gerar_epg_claro()      # gera claro.xml separado
+    gerar_epg_unificado()
