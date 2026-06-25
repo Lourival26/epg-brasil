@@ -1,35 +1,30 @@
 import requests
 import xml.etree.ElementTree as ET
 
-# Fontes que entregam arquivos .xml diretos e possuem grade completa no Brasil
+# Fontes que entregam arquivos .xml diretos
 fontes = {
     "iptv_org": "https://iptv-org.github.io/epg/guides/br/brazil.xml",
-    "pluto_tv": "https://i.mjh.nz/PlutoTV/br.xml"
+    "pluto_tv": "https://i.mjh.nz/PlutoTV/br.xml",
+    "claro": "https://iptv-org.github.io/epg/guides/br/claro.xml"  # <-- ADICIONEI A CLARO
 }
 
 def gerar_epg_unificado():
-    # Cria a estrutura raiz do XML
     root = ET.Element("tv", {"generator-info-name": "Lourival026-EPG"})
-    
-    # Conjuntos para evitar duplicatas de canais
     canais_adicionados = set()
 
     for nome, url in fontes.items():
         print(f"Baixando e processando: {nome}...")
         try:
-            # Baixa o XML da fonte
             resp = requests.get(url, timeout=60)
             if resp.status_code == 200:
                 temp_root = ET.fromstring(resp.content)
                 
-                # Adiciona canais se ainda não existirem
                 for canal in temp_root.findall('channel'):
                     canal_id = canal.get('id')
                     if canal_id not in canais_adicionados:
                         root.append(canal)
                         canais_adicionados.add(canal_id)
                 
-                # Adiciona todos os programas encontrados
                 for programa in temp_root.findall('programme'):
                     root.append(programa)
                     
@@ -38,7 +33,6 @@ def gerar_epg_unificado():
         except Exception as e:
             print(f"Erro ao processar {nome}: {e}")
 
-    # Salva o arquivo final
     tree = ET.ElementTree(root)
     tree.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
     print("Sucesso: epg_completo.xml gerado com sucesso!")
