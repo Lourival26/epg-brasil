@@ -2,39 +2,31 @@ import requests
 import xml.etree.ElementTree as ET
 import gzip
 import io
+import time
 
-# URL da fonte
-URL_SHARE = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
+URL = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
+HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-# LISTA DE IDs QUE VOCÊ QUER MANTER (Exemplos, ajuste com os IDs dos seus canais)
-canais_desejados = {"canal1.id", "canal2.id"} 
-
-def processar_epg():
-    print("Baixando arquivo...")
-    resp = requests.get(URL_SHARE, timeout=60)
-    
-    if resp.status_code == 200:
-        buffer = io.BytesIO(resp.content)
+def gerar_epg():
+    print("Iniciando download da Share...")
+    try:
+        # Aumentamos o timeout para garantir que o download tenha tempo de concluir
+        response = requests.get(URL, headers=HEADERS, timeout=120)
+        response.raise_for_status() # Lança erro se a resposta não for 200
+        
+        print("Download bem-sucedido. Descompactando...")
+        buffer = io.BytesIO(response.content)
         with gzip.GzipFile(fileobj=buffer) as f:
-            tree = ET.parse(f)
-            root = tree.getroot()
+            # Lendo todo o conteúdo para a memória
+            conteudo = f.read()
             
-            # Novo XML enxuto
-            novo_root = ET.Element("tv")
+        print("Salvando arquivo final...")
+        with open("epg_completo.xml", "wb") as f:
+            f.write(conteudo)
             
-            # Filtra apenas os canais e programas da lista
-            for canal in root.findall('channel'):
-                if canal.attrib.get('id') in canais_desejados:
-                    novo_root.append(canal)
-            
-            for prog in root.findall('programme'):
-                if prog.attrib.get('channel') in canais_desejados:
-                    novo_root.append(prog)
-            
-            # Salva o arquivo pequeno
-            tree_final = ET.ElementTree(novo_root)
-            tree_final.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-            print("Arquivo filtrado e salvo com sucesso!")
+        print("Sucesso total!")
+    except Exception as e:
+        print(f"Erro ocorrido: {e}")
 
 if __name__ == "__main__":
-    processar_epg()
+    gerar_epg()
