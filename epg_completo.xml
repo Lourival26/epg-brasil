@@ -108,6 +108,7 @@
   <channel id="AnimeTV.br"><display-name lang="pt">Anime TV</display-name></channel>
   <channel id="Jetsontv.br"><display-name lang="pt">Jetsontv</display-name></channel>
   <channel id="DomiKids.br"><display-name lang="pt">Domi Kids</display-name></channel>
+  <channel id="MinisterioInfantil.br"><display-name lang="pt">Ministério Infantil</display-name></channel>
   <channel id="HalloSeries.br"><display-name lang="pt">Hallo! Series</display-name></channel>
   <channel id="HalloClassic.br"><display-name lang="pt">Hallo! Classic</display-name></channel>
   <channel id="HalloMovies.br"><display-name lang="pt">Hallo! Movies</display-name></channel>
@@ -175,6 +176,8 @@
   <channel id="FilmelierTV.br"><display-name lang="pt">Filmelier TV</display-name></channel>
   <channel id="PlutoTVFiccaoCientifica.br"><display-name lang="pt">Pluto TV Ficção Científica</display-name></channel>
   <channel id="PlutoTVAdrenalinaFreezone.br"><display-name lang="pt">Pluto TV Adrenalina Freezone</display-name></channel>
+  <channel id="HalloClassic2.br"><display-name lang="pt">Hallo! Classic</display-name></channel>
+  <channel id="HalloMovies2.br"><display-name lang="pt">Hallo! Movies</display-name></channel>
   <channel id="SouthParkColecaoCartman.br"><display-name lang="pt">South Park: Coleção Cartman</display-name></channel>
   <channel id="SouthParkColecaoKenny.br"><display-name lang="pt">South Park: Coleção Kenny</display-name></channel>
   <channel id="SouthParkColecaoKyle.br"><display-name lang="pt">South Park: Coleção Kyle</display-name></channel>
@@ -190,6 +193,7 @@
   <channel id="CSIMiami.br"><display-name lang="pt">CSI: Miami</display-name></channel>
   <channel id="PlutoTVSeriesSci-Fi.br"><display-name lang="pt">Pluto TV Séries Sci-Fi</display-name></channel>
   <channel id="OHomemQueVeioDoCeu.br"><display-name lang="pt">O Homem que veio do Céu</display-name></channel>
+  <channel id="HalloSeries13.br"><display-name lang="pt">Hallo! Series</display-name></channel>
   <channel id="Naruto.br"><display-name lang="pt">Naruto</display-name></channel>
   <channel id="LoadingTV.br"><display-name lang="pt">Loading... TV HD</display-name></channel>
   <channel id="WordingTV.br"><display-name lang="pt">WORDING TV</display-name></channel>
@@ -248,12 +252,12 @@
   <channel id="DiscoveryHomeHealth.br"><display-name lang="pt">Disc. Home &amp; Health HD</display-name></channel>
   <channel id="DiscoveryChannel.br"><display-name lang="pt">Discovery Channel FHD</display-name></channel>
   <channel id="DiscoveryScience.br"><display-name lang="pt">Discovery Science HD</display-name></channel>
-  <channel id="Discovery.Theater"><display-name lang="pt">Discovery Theater HD</display-name></channel>
   <channel id="PlutoTVInvestigacao.br"><display-name lang="pt">Pluto tv Investigação</display-name></channel>
   <channel id="PlutoTVMisterios.br"><display-name lang="pt">Pluto TV Mistérios</display-name></channel>
   <channel id="PeopleAreAwesome.br"><display-name lang="pt">People Are Awesome</display-name></channel>
   <channel id="TraceSportStars.br"><display-name lang="pt">Trace Sport Stars</display-name></channel>
   <channel id="Motorvision.br"><display-name lang="pt">Motorvision FHD</display-name></channel>
+  <channel id="AutoTV2.br"><display-name lang="pt">Auto TV</display-name></channel>
   <channel id="CultneTV.br"><display-name lang="pt">Cultne TV</display-name></channel>
   <channel id="NatureMoments.br"><display-name lang="pt">Nature Moments HD</display-name></channel>
   <channel id="NatureTime.br"><display-name lang="pt">NatureTime FHD</display-name></channel>
