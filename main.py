@@ -1,41 +1,41 @@
 import xml.etree.ElementTree as ET
+import re
+
+def limpar_nome(nome):
+    """Remove sufixos comuns para que 'Globo HD' e 'Globo' virem a mesma coisa."""
+    nome = nome.upper()
+    # Remove sufixos como HD, FHD, SD, etc.
+    nome = re.sub(r'\s+(HD|FHD|SD|BR|TV|FHD²|HD²|FHD2)\s*$', '', nome)
+    return nome.strip()
 
 def filtrar_grade_local():
-    print("Iniciando filtragem inteligente por nome...")
+    print("Iniciando filtragem inteligente para Lourival26...")
     try:
         tree = ET.parse('epg.xml')
         root = tree.getroot()
         
-        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Unificada"})
+        # Mantendo seu nome na estrutura do arquivo
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26"})
         
-        # Agora vamos rastrear apenas pelo NOME do canal
-        nomes_ja_adicionados = set()
+        canais_adicionados = {} 
         
-        # 1. Filtra canais únicos pelo nome
         for canal in root.findall('channel'):
             display_name = canal.find('display-name')
-            nome = display_name.text if display_name is not None else ""
-            
-            # Filtro: tem .br E o nome ainda não apareceu
-            if '.br' in canal.attrib.get('id', '') and nome not in nomes_ja_adicionados:
-                novo_root.append(canal)
-                nomes_ja_adicionados.add(nome)
-        
-        # 2. Adiciona a programação, mas usamos uma lista de nomes válidos para filtrar
-        # Isso garante que só entre a grade de canais que realmente salvamos
-        for elemento in root:
-            if elemento.tag == 'programme':
-                canal_id = elemento.attrib.get('channel', '')
+            if display_name is not None:
+                nome_bruto = display_name.text
+                nome_limpo = limpar_nome(nome_bruto)
                 
-                # Procura o nome correspondente ao ID para saber se devemos manter
-                canal_origem = root.find(f".//channel[@id='{canal_id}']")
-                if canal_origem is not None:
-                    nome_canal = canal_origem.find('display-name')
-                    if nome_canal is not None and nome_canal.text in nomes_ja_adicionados:
-                        novo_root.append(elemento)
+                if nome_limpo not in canais_adicionados:
+                    novo_root.append(canal)
+                    canais_adicionados[nome_limpo] = canal.attrib.get('id')
+        
+        ids_validos = set(canais_adicionados.values())
+        for elemento in root.findall('programme'):
+            if elemento.attrib.get('channel') in ids_validos:
+                novo_root.append(elemento)
         
         ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-        print("Sucesso! Canais agrupados por nome e duplicatas removidas.")
+        print("Sucesso! Arquivo epg_completo.xml gerado por Lourival26.")
         
     except Exception as e:
         print(f"Erro ao processar: {e}")
