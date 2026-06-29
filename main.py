@@ -1,44 +1,29 @@
 import xml.etree.ElementTree as ET
-import re
-
-def limpar_nome(nome):
-    """Remove sufixos comuns para que 'Globo HD' e 'Globo' virem a mesma coisa."""
-    nome = nome.upper()
-    # Remove sufixos como HD, FHD, SD, etc.
-    nome = re.sub(r'\s+(HD|FHD|SD|BR|TV|FHD²|HD²|FHD2)\s*$', '', nome)
-    return nome.strip()
 
 def filtrar_grade_local():
-    print("Iniciando filtragem inteligente para Lourival26...")
+    print("Iniciando filtragem para Lourival26...")
+    
     try:
-        tree = ET.parse('epg.xml')
+        # Lê o arquivo que você criou no repositório
+        tree = ET.parse('epg_origem.xml')
         root = tree.getroot()
         
-        # Mantendo seu nome na estrutura do arquivo
-        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26"})
+        # Cria a nova estrutura com seu nome
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro"})
         
-        canais_adicionados = {} 
-        
+        # Filtra apenas os canais que possuem '.br' no id
+        # Como o seu XML enviado só tem <channel>, o script vai filtrar esses
         for canal in root.findall('channel'):
-            display_name = canal.find('display-name')
-            if display_name is not None:
-                nome_bruto = display_name.text
-                nome_limpo = limpar_nome(nome_bruto)
+            canal_id = canal.attrib.get('id', '')
+            if '.br' in canal_id:
+                novo_root.append(canal)
                 
-                if nome_limpo not in canais_adicionados:
-                    novo_root.append(canal)
-                    canais_adicionados[nome_limpo] = canal.attrib.get('id')
-        
-        ids_validos = set(canais_adicionados.values())
-        for elemento in root.findall('programme'):
-            if elemento.attrib.get('channel') in ids_validos:
-                novo_root.append(elemento)
-        
+        # Salva o resultado
         ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-        print("Sucesso! Arquivo epg_completo.xml gerado por Lourival26.")
+        print("Arquivo epg_completo.xml gerado com sucesso para Lourival26!")
         
     except Exception as e:
-        print(f"Erro ao processar: {e}")
+        print(f"Erro ao processar arquivo: {e}")
 
 if __name__ == "__main__":
     filtrar_grade_local()
