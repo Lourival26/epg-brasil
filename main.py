@@ -1,42 +1,40 @@
 import xml.etree.ElementTree as ET
 
 def filtrar_grade_local():
-    print("Iniciando filtragem e geração do EPG...")
-    
+    print("Iniciando filtragem ultra-rápida...")
     try:
-        # Lê o arquivo fonte
+        # Lendo o 'epg.xml' que está na pasta do seu GitHub
         tree = ET.parse('epg.xml')
         root = tree.getroot()
         
-        # Cria a estrutura do novo arquivo
-        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Completa"})
+        # Cria a nova estrutura limpa
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro-Otimizada"})
         
-        ids_processados = set()
+        ids_br = set()
         nomes_processados = set()
         
-        # Primeiro, filtra e adiciona os canais
-        canais_validos = []
+        # 1. Filtra e adiciona apenas os canais .br sem duplicados
         for canal in root.findall('channel'):
             canal_id = canal.attrib.get('id', '')
             display_name = canal.find('display-name')
             nome = display_name.text if display_name is not None else ""
             
-            # Filtro: precisa ter .br E não ser duplicado
-            if '.br' in canal_id and canal_id not in ids_processados and nome not in nomes_processados:
+            if '.br' in canal_id and canal_id not in ids_br and nome not in nomes_processados:
                 novo_root.append(canal)
-                ids_processados.add(canal_id)
+                ids_br.add(canal_id)
                 nomes_processados.add(nome)
-                canais_validos.append(canal_id)
         
-        # Segundo, adiciona a grade de programação (o que está passando) apenas dos canais filtrados
-        for programa in root.findall('programme'):
-            if programa.attrib.get('channel') in ids_processados:
-                novo_root.append(programa)
+        # 2. Adiciona a programação de forma super leve e rápida
+        # Passando direto pelos elementos para não consumir a memória do GitHub e não travar
+        for elemento in root:
+            if elemento.tag == 'programme':
+                canal_id = elemento.attrib.get('channel', '')
+                if canal_id in ids_br:
+                    novo_root.append(elemento)
         
-        # Salva o resultado final
-        tree_final = ET.ElementTree(novo_root)
-        tree_final.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-        print(f"Sucesso! {len(ids_processados)} canais brasileiros processados com a programação.")
+        # Salva o arquivo final limpo e completo
+        ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+        print("Sucesso! O arquivo epg_completo.xml foi gerado com a programação de forma super rápida.")
         
     except Exception as e:
         print(f"Erro ao processar: {e}")
