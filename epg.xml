@@ -8,7 +8,7 @@
   <channel id="GloboMG.br"><display-name lang="pt">Globo MG HD</display-name></channel>
   <channel id="GloboMG.br"><display-name lang="pt">Globo MG HD²</display-name></channel>
   <channel id="RPCCuritiba.br"><display-name lang="pt">RPC Curitiba HD</display-name></channel>
-  <channel id="RBS.POA"><display-name lang="pt">RBS TV Porto Alegre HD</display-name></channel>
+  <channel id="RBS.POA.br"><display-name lang="pt">RBS TV Porto Alegre HD</display-name></channel>
   <channel id="RPCMaringa.br"><display-name lang="pt">RPC Maringa FH</display-name></channel>
   <channel id="GloboGoias.br"><display-name lang="pt">Globo Goiás HD</display-name></channel>
   <channel id="GloboManaus.br"><display-name lang="pt">Globo Manaus HD</display-name></channel>
@@ -226,9 +226,9 @@
   <channel id="LuchaLibre.br"><display-name lang="pt">LUCHA LIBRE</display-name></channel>
   <channel id="SFTCombat.br"><display-name lang="pt">SFT Combat</display-name></channel>
   <channel id="Combatv.br"><display-name lang="pt">COMBATV</display-name></channel>
-  <channel id="GeTV.br"><display-name lang="pt">Ge TV</display-name></channel>
+  <channel id="GeTV.br"><display-name lang="pt">GeTV</display-name></channel>
   <channel id="Desimpedidos.br"><display-name lang="pt">Desimpedidos</display-name></channel>
-  <channel id="CazeTV.br"><display-name lang="pt">Cazé TV</display-name></channel>
+  <channel id="CazeTV.br"><display-name lang="pt">CazéTV</display-name></channel>
   <channel id="Barcelona.br"><display-name lang="pt">BARCELONA</display-name></channel>
   <channel id="RealMadrid.br"><display-name lang="pt">REAL MADRID</display-name></channel>
   <channel id="NSports.br"><display-name lang="pt">NSPORTS</display-name></channel>
@@ -316,7 +316,7 @@
   <channel id="NovelasEvagina.br"><display-name lang="pt">Novelas Evagina</display-name></channel>
   <channel id="TVTelenovelas.br"><display-name lang="pt">TV Telenovelas</display-name></channel>
   <channel id="Telenovelas.br"><display-name lang="pt">Telenovelas</display-name></channel>
-  <channel id="TVTelemundo.Telenovelas"><display-name lang="pt">TV Telemundo Telenovelas</display-name></channel>
+  <channel id="TVTelemundoTelenovelas.br"><display-name lang="pt">TV Telemundo Telenovelas</display-name></channel>
   <channel id="Novelissima.br"><display-name lang="pt">Novelissima BR</display-name></channel>
   <channel id="SonyNovelas.br"><display-name lang="pt">Sony Novelas</display-name></channel>
   <channel id="SparkLuzEAmor.br"><display-name lang="pt">Spark Luz E Amor HD</display-name></channel>
