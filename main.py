@@ -1,29 +1,32 @@
 import xml.etree.ElementTree as ET
 
-def filtrar_grade_local():
-    print("Iniciando filtragem para Lourival26...")
+def filtrar_grade_completa():
+    print("Iniciando filtragem completa (Canais + Programação) para Lourival26...")
     
     try:
-        # Lê o arquivo que você criou no repositório
         tree = ET.parse('epg_origem.xml')
         root = tree.getroot()
         
-        # Cria a nova estrutura com seu nome
-        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro"})
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Completa"})
         
-        # Filtra apenas os canais que possuem '.br' no id
-        # Como o seu XML enviado só tem <channel>, o script vai filtrar esses
+        # 1. Filtra os canais e guarda os IDs válidos
+        ids_validos = set()
         for canal in root.findall('channel'):
-            canal_id = canal.attrib.get('id', '')
-            if '.br' in canal_id:
+            if '.br' in canal.attrib.get('id', ''):
                 novo_root.append(canal)
+                ids_validos.add(canal.attrib.get('id'))
+        
+        # 2. O QUE FALTAVA: Filtra apenas a programação dos canais que salvamos
+        for programa in root.findall('programme'):
+            canal_do_programa = programa.attrib.get('channel', '')
+            if canal_do_programa in ids_validos:
+                novo_root.append(programa)
                 
-        # Salva o resultado
         ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
-        print("Arquivo epg_completo.xml gerado com sucesso para Lourival26!")
+        print("Guia completo gerado com sucesso!")
         
     except Exception as e:
-        print(f"Erro ao processar arquivo: {e}")
+        print(f"Erro: {e}")
 
 if __name__ == "__main__":
-    filtrar_grade_local()
+    filtrar_grade_completa()
