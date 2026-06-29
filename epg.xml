@@ -6,7 +6,6 @@
   <channel id="GloboNordeste.br"><display-name lang="pt">Globo Nordeste HD</display-name></channel>
   <channel id="GloboMT.br"><display-name lang="pt">Globo MT HD</display-name></channel>
   <channel id="GloboMG.br"><display-name lang="pt">Globo MG HD</display-name></channel>
-  <channel id="GloboMG.br"><display-name lang="pt">Globo MG HD²</display-name></channel>
   <channel id="RPCCuritiba.br"><display-name lang="pt">RPC Curitiba HD</display-name></channel>
   <channel id="RBS.POA.br"><display-name lang="pt">RBS TV Porto Alegre HD</display-name></channel>
   <channel id="RPCMaringa.br"><display-name lang="pt">RPC Maringa FH</display-name></channel>
@@ -37,7 +36,6 @@
   <channel id="RedeFamilia.br"><display-name lang="pt">Rede Família HD</display-name></channel>
   <channel id="TVGazeta.br"><display-name lang="pt">TV Gazeta SP</display-name></channel>
   <channel id="TVAracati.br"><display-name lang="pt">TV Aracati HD</display-name></channel>
-  <channel id="AmazonSat.br"><display-name lang="pt">Amazon Sat SD</display-name></channel>
   <channel id="AmazonSat.br"><display-name lang="pt">Amazon Sat HD</display-name></channel>
   <channel id="TVideonews.br"><display-name lang="pt">TVideonews HD</display-name></channel>
   <channel id="RedeMinas.br"><display-name lang="pt">Rede Minas HD</display-name></channel>
@@ -63,12 +61,10 @@
   <channel id="RecordNacional.br"><display-name lang="pt">RecordTV HD</display-name></channel>
   <channel id="RecordRJ.br"><display-name lang="pt">RecordTV RJ HD</display-name></channel>
   <channel id="RecordMG.br"><display-name lang="pt">RecordTV MG</display-name></channel>
-  <channel id="RecordRJ.br"><display-name lang="pt">RecordTV RJ SD</display-name></channel>
   <channel id="RecordMT.br"><display-name lang="pt">RecordTV MT</display-name></channel>
   <channel id="RecordRN.br"><display-name lang="pt">RecordTV RN</display-name></channel>
   <channel id="RecordGoias.br"><display-name lang="pt">RecordTV Goiás HD</display-name></channel>
   <channel id="RecordConquista.br"><display-name lang="pt">RecordTV Conquista HD</display-name></channel>
-  <channel id="RecordMT.br"><display-name lang="pt">RecordTV Mato MT HD</display-name></channel>
   <channel id="RecordJuara.br"><display-name lang="pt">RecordTV Juara HD</display-name></channel>
   <channel id="TVTropical.br"><display-name lang="pt">TV Tropical HD</display-name></channel>
   <channel id="RecordSicTV.br"><display-name lang="pt">Record SicTV (RO)</display-name></channel>
@@ -87,12 +83,8 @@
   <channel id="RecordNews.br"><display-name lang="pt">Record News HD</display-name></channel>
   <channel id="ARTVPortugal.br"><display-name lang="pt">ARTV Portugal HD</display-name></channel>
   <channel id="PlutoTVUOL.br"><display-name lang="pt">Pluto TV Canal UOL</display-name></channel>
-  <channel id="CNNBrasil.br"><display-name lang="pt">CNN BRASIL SD</display-name></channel>
-  <channel id="CNNBrasil.br"><display-name lang="pt">CNN BRASIL HD</display-name></channel>
   <channel id="CNNBrasil.br"><display-name lang="pt">CNN BRASIL FHD</display-name></channel>
   <channel id="4Por4.br"><display-name lang="pt">4 POR 4</display-name></channel>
-  <channel id="TVCamara.br"><display-name lang="pt">TV Câmara HD</display-name></channel>
-  <channel id="TVCamara.br"><display-name lang="pt">TV Câmara HD²</display-name></channel>
   <channel id="CanalGOV.br"><display-name lang="pt">Canal GOV</display-name></channel>
   <channel id="TVVideonews.br"><display-name lang="pt">TV VIDEONEWS</display-name></channel>
   <channel id="HTOKids.br"><display-name lang="pt">HTO KIDS HD</display-name></channel>
@@ -112,7 +104,6 @@
   <channel id="MrBeanAnimated.br"><display-name lang="pt">Mr Bean Animated</display-name></channel>
   <channel id="MinisterioInfantilTV.br"><display-name lang="pt">Ministério Infantil TV</display-name></channel>
   <channel id="PeppaPig.br"><display-name lang="pt">Peppa Pig YT</display-name></channel>
-  <channel id="CartoonNetwork.br"><display-name lang="pt">Cartoon Network SD</display-name></channel>
   <channel id="CartoonNetwork.br"><display-name lang="pt">Cartoon Network HD</display-name></channel>
   <channel id="RetroCartoon.br"><display-name lang="pt">Retro Cartoon</display-name></channel>
   <channel id="GospelCartoon.br"><display-name lang="pt">Gospel Cartoon</display-name></channel>
@@ -131,22 +122,16 @@
   <channel id="StarTrekDS9.br"><display-name lang="pt">Star Trek: Deep Space Nine</display-name></channel>
   <channel id="StarTrekVoyager.br"><display-name lang="pt">Star Trek: Voyager</display-name></channel>
   <channel id="Space.br"><display-name lang="pt">SPACE HD</display-name></channel>
-  <channel id="Space.br"><display-name lang="pt">SPACE HD²</display-name></channel>
   <channel id="TNT.br"><display-name lang="pt">TNT HD</display-name></channel>
-  <channel id="TNT.br"><display-name lang="pt">TNT SD</display-name></channel>
   <channel id="WarnerChannel.br"><display-name lang="pt">Warner Channel HD</display-name></channel>
-  <channel id="WarnerChannel.br"><display-name lang="pt">Warner Channel HD²</display-name></channel>
   <channel id="AeE.br"><display-name lang="pt">A&amp;E HD</display-name></channel>
-  <channel id="AeE.br"><display-name lang="pt">A&amp;E HD²</display-name></channel>
   <channel id="AXN.br"><display-name lang="pt">AXN HD</display-name></channel>
-  <channel id="TelecineAction.br"><display-name lang="pt">Telecine Action HD²</display-name></channel>
   <channel id="TelecineAction.br"><display-name lang="pt">Telecine Action HD</display-name></channel>
   <channel id="TelecinePipoca.br"><display-name lang="pt">Telecine Pipoca HD</display-name></channel>
   <channel id="TelecinePremium.br"><display-name lang="pt">Telecine Premium HD</display-name></channel>
   <channel id="TelecineTouch.br"><display-name lang="pt">Telecine Touch HD</display-name></channel>
   <channel id="TelecineCult.br"><display-name lang="pt">Telecine Cult HD</display-name></channel>
   <channel id="TelecineFun.br"><display-name lang="pt">Telecine Fun HD</display-name></channel>
-  <channel id="AMC.br"><display-name lang="pt">AMC SD</display-name></channel>
   <channel id="AMC.br"><display-name lang="pt">AMC HD</display-name></channel>
   <channel id="SonyChannel.br"><display-name lang="pt">Sony Channel HD</display-name></channel>
   <channel id="Cinemax.br"><display-name lang="pt">CINEMAX HD</display-name></channel>
@@ -158,7 +143,6 @@
   <channel id="HBOSignature.br"><display-name lang="pt">HBO SIGNATURE HD</display-name></channel>
   <channel id="HBOPlus.br"><display-name lang="pt">HBO+ HD</display-name></channel>
   <channel id="UniversalTV.br"><display-name lang="pt">Universal Channel HD</display-name></channel>
-  <channel id="UniversalTV.br"><display-name lang="pt">Universal Channel HD²</display-name></channel>
   <channel id="MyTimeMovies.br"><display-name lang="pt">MyTime Movies</display-name></channel>
   <channel id="MovieSphere.br"><display-name lang="pt">MOVIE SPHERE</display-name></channel>
   <channel id="SonyOneEmocoes.br"><display-name lang="pt">SONY ONE EMOCOES HD</display-name></channel>
@@ -217,7 +201,6 @@
   <channel id="WordingTV.br"><display-name lang="pt">WORDING TV</display-name></channel>
   <channel id="Geekdot.br"><display-name lang="pt">Geekdot</display-name></channel>
   <channel id="AniTV.br"><display-name lang="pt">AniTV</display-name></channel>
-  <channel id="HalloAnime.br"><display-name lang="pt">Hallo Anime HD²</display-name></channel>
   <channel id="Combate.br"><display-name lang="pt">Combate HD</display-name></channel>
   <channel id="DAZNCombate.br"><display-name lang="pt">DAZN Combate HD</display-name></channel>
   <channel id="SFTCombate.br"><display-name lang="pt">SFT Combate BR HD</display-name></channel>
@@ -234,17 +217,14 @@
   <channel id="NSports.br"><display-name lang="pt">NSPORTS</display-name></channel>
   <channel id="BandSports.br"><display-name lang="pt">Band Sports HD</display-name></channel>
   <channel id="AutoTV.br"><display-name lang="pt">Auto TV</display-name></channel>
-  <channel id="SporTV.br"><display-name lang="pt">SporTV HD</display-name></channel>
   <channel id="SporTV.br"><display-name lang="pt">SporTV FHD</display-name></channel>
   <channel id="SporTV2.br"><display-name lang="pt">SporTV 2 HD</display-name></channel>
   <channel id="SporTV3.br"><display-name lang="pt">SporTV 3 HD</display-name></channel>
   <channel id="SporTV3.brF1"><display-name lang="pt">SporTV 3 F1 AO VIVO</display-name></channel>
-  <channel id="ESPN.br"><display-name lang="pt">ESPN HD</display-name></channel>
   <channel id="ESPN.br"><display-name lang="pt">ESPN FHD</display-name></channel>
   <channel id="ESPN2.br"><display-name lang="pt">ESPN 2 HD</display-name></channel>
   <channel id="ESPN3.br"><display-name lang="pt">ESPN 3 HD</display-name></channel>
   <channel id="ESPN4.br"><display-name lang="pt">ESPN 4 HD</display-name></channel>
-  <channel id="ESPN4.br"><display-name lang="pt">ESPN 4 SD</display-name></channel>
   <channel id="ESPN5.br"><display-name lang="pt">ESPN 5 HD</display-name></channel>
   <channel id="ESPN6.br"><display-name lang="pt">ESPN 6 HD</display-name></channel>
   <channel id="PremiereClubes.br"><display-name lang="pt">Premiere Clubes HD</display-name></channel>
@@ -283,16 +263,14 @@
   <channel id="AutoTV2.br"><display-name lang="pt">Auto TV</display-name></channel>
   <channel id="CultneTV.br"><display-name lang="pt">Cultne TV</display-name></channel>
   <channel id="NatureMoments.br"><display-name lang="pt">Nature Moments HD</display-name></channel>
-  <channel id="NatureTime.br"><display-name lang="pt">Nature Time HD</display-name></channel>
+  <channel id="NatureTime.br"><display-name lang="pt">NatureTime FHD</display-name></channel>
   <channel id="WildEarth.br"><display-name lang="pt">WildEarth 24 horas HD</display-name></channel>
   <channel id="LoveNature.br"><display-name lang="pt">Love Nature HD</display-name></channel>
   <channel id="Pesca.br"><display-name lang="pt">Pesca HD</display-name></channel>
   <channel id="Natureza.br"><display-name lang="pt">Natureza HD</display-name></channel>
-  <channel id="NatureTime.br"><display-name lang="pt">NatureTime FHD</display-name></channel>
   <channel id="PlutoTVPaisagens.br"><display-name lang="pt">Pluto TV Paisagens por Stingray HD</display-name></channel>
   <channel id="PlutoTVAnimais.br"><display-name lang="pt">Pluto TV Animais HD</display-name></channel>
   <channel id="OEncantadorDeCaes.br"><display-name lang="pt">O Encantador de Cães HD</display-name></channel>
-  <channel id="PlutoTVMisterios2.br"><display-name lang="pt">Pluto TV Mistérios</display-name></channel>
   <channel id="PlutoTVAliens.br"><display-name lang="pt">Pluto TV Aliens</display-name></channel>
   <channel id="Assombracoes.br"><display-name lang="pt">Assombrações</display-name></channel>
   <channel id="EstadoParanormal.br"><display-name lang="pt">Estado Paranormal</display-name></channel>
