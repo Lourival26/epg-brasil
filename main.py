@@ -4,11 +4,11 @@ def filtrar_grade_com_programacao():
     print("Iniciando filtragem completa (canais e programas)...")
     
     try:
-        # Lê o arquivo de origem completo
-        tree = ET.parse('epg_origem.xml')
+        # Lê o arquivo epg.xml que está no seu repositório
+        tree = ET.parse('epg.xml')
         root = tree.getroot()
         
-        # Cria a nova estrutura
+        # Cria a nova estrutura para o arquivo filtrado
         novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro-Completa"})
         
         # Identifica IDs de canais que terminam com .br
@@ -19,13 +19,13 @@ def filtrar_grade_com_programacao():
                 ids_validos.add(canal_id)
                 novo_root.append(canal)
         
-        # Filtra apenas os programas dos canais que foram selecionados
+        # Filtra apenas os programas dos canais que foram selecionados anteriormente
         for programa in root.findall('programme'):
             canal_ref = programa.attrib.get('channel', '')
             if canal_ref in ids_validos:
                 novo_root.append(programa)
                 
-        # Salva o arquivo final
+        # Salva o resultado no arquivo epg_completo.xml
         ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
         print("Arquivo epg_completo.xml gerado com sucesso com grade e canais!")
         
