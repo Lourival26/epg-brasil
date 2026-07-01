@@ -1,16 +1,24 @@
 import xml.etree.ElementTree as ET
+import requests
 
-def filtrar_grade_definitivo():
-    print("Iniciando filtragem completa...")
+def processar_epg_claro():
+    url = "https://raw.githubusercontent.com/limaalef/BrazilTVEPG/refs/heads/main/claro.xml"
+    print(f"Baixando EPG de: {url}")
+    
     try:
-        # Carrega o XML original
-        tree = ET.parse('epg.xml')
-        root = tree.getroot()
+        response = requests.get(url)
+        response.raise_for_status()
         
-        # Cria o novo arquivo XML
+        # Faz o parse
+        root = ET.fromstring(response.content)
+        
+        # FORÇANDO A ALTERAÇÃO DO NOME DO GERADOR
+        root.set("generator-info-name", "Lourival26-Completo")
+        
+        # Cria a estrutura nova para filtrar
         novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Completo"})
         
-        # 1. Identifica os IDs válidos
+        # Filtra canais .br
         ids_validos = set()
         for canal in root.findall('channel'):
             canal_id = canal.attrib.get('id', '')
@@ -18,8 +26,7 @@ def filtrar_grade_definitivo():
                 ids_validos.add(canal_id)
                 novo_root.append(canal)
         
-        # 2. ESSA É A PARTE QUE ESTAVA FALTANDO OU FALHANDO
-        # Adiciona APENAS os programas que pertencem a esses canais
+        # Filtra programas
         encontrou_programas = 0
         for programa in root.findall('programme'):
             canal_ref = programa.attrib.get('channel', '')
@@ -29,10 +36,12 @@ def filtrar_grade_definitivo():
         
         print(f"Programas encontrados e adicionados: {encontrou_programas}")
         
-        # Salva o arquivo final
-        ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+        # Salva
+        tree = ET.ElementTree(novo_root)
+        tree.write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+        
     except Exception as e:
         print(f"Erro ao processar: {e}")
 
 if __name__ == "__main__":
-    filtrar_grade_definitivo()
+    processar_epg_claro()
