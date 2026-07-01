@@ -1,29 +1,36 @@
-import requests
 import xml.etree.ElementTree as ET
 
-def processar_epg():
-    url = "https://raw.githubusercontent.com/Lourival26/epg-brasil/refs/heads/main/epg.xml"
-    response = requests.get(url)
-    root = ET.fromstring(response.content)
+def filtrar_grade_com_programacao():
+    print("Iniciando filtragem completa (canais e programas)...")
     
-    novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Final"})
-    
-    # Dicionário para garantir que cada canal seja adicionado apenas UMA vez
-    canais_adicionados = {}
-    
-    # 1. Filtra canais únicos
-    for canal in root.findall('channel'):
-        c_id = canal.get('id')
-        if c_id not in canais_adicionados:
-            novo_root.append(canal)
-            canais_adicionados[c_id] = True
-            
-    # 2. Filtra programas apenas para os canais que foram aceitos
-    for programa in root.findall('programme'):
-        if programa.get('channel') in canais_adicionados:
-            novo_root.append(programa)
-    
-    ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+    try:
+        # Lê o arquivo de origem completo
+        tree = ET.parse('epg_origem.xml')
+        root = tree.getroot()
+        
+        # Cria a nova estrutura
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro-Completa"})
+        
+        # Identifica IDs de canais que terminam com .br
+        ids_validos = set()
+        for canal in root.findall('channel'):
+            canal_id = canal.attrib.get('id', '')
+            if '.br' in canal_id:
+                ids_validos.add(canal_id)
+                novo_root.append(canal)
+        
+        # Filtra apenas os programas dos canais que foram selecionados
+        for programa in root.findall('programme'):
+            canal_ref = programa.attrib.get('channel', '')
+            if canal_ref in ids_validos:
+                novo_root.append(programa)
+                
+        # Salva o arquivo final
+        ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+        print("Arquivo epg_completo.xml gerado com sucesso com grade e canais!")
+        
+    except Exception as e:
+        print(f"Erro ao processar arquivo: {e}")
 
 if __name__ == "__main__":
-    processar_epg()
+    filtrar_grade_com_programacao()
