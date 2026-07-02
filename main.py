@@ -1,32 +1,29 @@
-import requests
 import xml.etree.ElementTree as ET
 
-def diagnostico_ids():
-    # Apenas as fontes públicas para teste
-    links = [
-        "https://raw.githubusercontent.com/iptv-org/epg/master/channels/br/telecine.xml"
-    ]
+def filtrar_grade_local():
+    print("Iniciando filtragem para Lourival26...")
     
     try:
-        meu_esqueleto = ET.parse('epg.xml')
-        meus_ids = {canal.attrib.get('id') for canal in meu_esqueleto.findall('channel')}
+        # Lê o arquivo que você criou no repositório
+        tree = ET.parse('epg_origem.xml')
+        root = tree.getroot()
         
-        print(f"IDs que você tem no epg.xml: {list(meus_ids)[:3]}...")
+        # Cria a nova estrutura com seu nome
+        novo_root = ET.Element("tv", {"generator-info-name": "Lourival26-Grade-Claro"})
         
-        for url in links:
-            response = requests.get(url)
-            root_fonte = ET.fromstring(response.content)
-            
-            # Conta quantos programas existem para os seus IDs
-            encontrados = 0
-            for prog in root_fonte.findall('programme'):
-                if prog.attrib.get('channel') in meus_ids:
-                    encontrados += 1
-            
-            print(f"Na fonte {url}, encontrei {encontrados} programas para os seus IDs.")
-            
+        # Filtra apenas os canais que possuem '.br' no id
+        # Como o seu XML enviado só tem <channel>, o script vai filtrar esses
+        for canal in root.findall('channel'):
+            canal_id = canal.attrib.get('id', '')
+            if '.br' in canal_id:
+                novo_root.append(canal)
+                
+        # Salva o resultado
+        ET.ElementTree(novo_root).write("epg_completo.xml", encoding="utf-8", xml_declaration=True)
+        print("Arquivo epg_completo.xml gerado com sucesso para Lourival26!")
+        
     except Exception as e:
-        print(f"Erro no diagnóstico: {e}")
+        print(f"Erro ao processar arquivo: {e}")
 
 if __name__ == "__main__":
-    diagnostico_ids()
+    filtrar_grade_local()
